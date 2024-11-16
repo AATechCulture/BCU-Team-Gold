@@ -40,7 +40,7 @@ School Name 🏫
 The ABC School
 
 Team Name 🏷
-Coding Costars
+BCU Gold
 
 ✨ Contributors ✨
 ...tell the world who you and your team are 🙂
