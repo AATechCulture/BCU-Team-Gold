@@ -3,7 +3,7 @@
 How might we provide support and aid to people in the wake of a natural disaster.
 
 # Project Description 🤯
-The project is a donation platform that enables users to contribute their reward points to support individuals impacted by natural disasters. Donors can access a real-time map displaying ongoing natural disasters, allowing them to make informed decisions on where their contributions are most needed.
+The project is a donation platform that enables users to contribute their reward points to support individuals impacted by natural disasters. Donors can access a real-time map displaying ongoing natural disasters, allowing them to make informed decisions on where their contributions are most needed. Rewards for donations are displayed and donation amounts are recorded on the dashboard.
 
 # Project Value 💰
 The project is aimed at helping those in the path of natural disasters. Donors can immediately donate points to support in the evacuation, while also receiving benfits down the road as a result. Donors help someone less fortunate now, while reaping the benefits of their kindness down the road.
