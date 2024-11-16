@@ -49,8 +49,8 @@ Coding Costars
 ✨ Contributors ✨
 ...tell the world who you and your team are 🙂
 
-Tyson Thomas
-Buchizya Mwase
-Tanyarazwa Chisepo
-Bongiwe Mkwnanzi
+Tyson Thomas,
+Buchizya Mwase,
+Tanyarazwa Chisepo,
+Bongiwe Mkwnanzi,
 Rapahel Boakye
