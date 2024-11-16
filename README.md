@@ -5,7 +5,7 @@ Challenge Statement(s) Addressed 🎯
 How might we provide support and aid to people in the wake of a natural disaster.
 
 Project Description 🤯
-....at least 3 sentences describing what the project does and how it works
+The project is a donation platform that enables users to contribute their reward points to support individuals impacted by natural disasters. Donors can access a real-time map displaying ongoing natural disasters, allowing them to make informed decisions on where their contributions are most needed.
 
 Project Value 💰
 ....at least 3 sentences describing your target customer and tangible benefits from your solution
