@@ -2,7 +2,7 @@
 
 CrisisAId
 Challenge Statement(s) Addressed 🎯
-...include the challenge statement(s) the project worked to address
+How might we provide support and aid to people in the wake of a natural disaster.
 
 Examples:
 
