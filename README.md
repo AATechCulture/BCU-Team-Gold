@@ -1,6 +1,4 @@
-# BCU-Team-Gold
-
-# CrisisAId
+# BCU-Team-Gold - CrisisAId
 # Challenge Statement(s) Addressed 🎯
 How might we provide support and aid to people in the wake of a natural disaster.
 
