@@ -4,10 +4,6 @@ CrisisAId
 Challenge Statement(s) Addressed 🎯
 How might we provide support and aid to people in the wake of a natural disaster.
 
-Examples:
-
-How might we decrease the United States chances of alien and monster attacks given what we know from popular alien and monster movies?
-How might we ....
 Project Description 🤯
 ....at least 3 sentences describing what the project does and how it works
 
