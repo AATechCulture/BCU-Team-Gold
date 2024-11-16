@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three.js Lightning Storm App</title>
+    <style>
+      /* Styling for the watermark */
+      #watermark {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 5rem;
+        color: rgba(255, 0, 0, 0.5); /* Red color with some transparency */
+        font-weight: bold;
+        font-style: oblique;
+        z-index: 10;
+        pointer-events: none; /* So it doesn't interfere with mouse interactions */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="watermark">CRISIS</div> <!-- Watermark element -->
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

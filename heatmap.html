@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #121212; /* Dark background */
+        color: #ffffff; /* White text for contrast */
+      }
+      #map {
+        height: 60vh; /* Fixed height for the map (60% of the viewport height) */
+        width: 100%;
+        border-bottom: 2px solid #333; /* Dark border */
+      }
+      #donate-button {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #ff6600; /* Bright orange for the button */
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        z-index: 1000; /* Ensure the button is above the map */
+        transition: background-color 0.3s;
+      }
+      #donate-button:hover {
+        background-color: #cc5200; /* Darker orange on hover */
+      }
+      /* Zoom Buttons */
+      .zoom-buttons {
+        position: absolute;
+        top: 60px;
+        left: 10px;
+        z-index: 1000; /* Ensure the buttons are above the map */
+      }
+      .zoom-button {
+        background-color: #1e1e1e; /* Dark background for zoom buttons */
+        border: 1px solid #333;
+        border-radius: 4px;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s;
+      }
+      .zoom-button:hover {
+        background-color: #ff6600; /* Orange highlight on hover */
+      }
+      .zoom-icon {
+        font-size: 20px;
+        color: #ffffff; /* White icon color */
+      }
+      .insights-container {
+        padding: 20px;
+        background-color: #1e1e1e; /* Dark background for insights */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        margin: 20px;
+      }
+      .insight-section {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #2a2a2a; /* Darker background for insight sections */
+        border-radius: 8px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s;
+      }
+      .insight-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+      }
+      .insight-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ff6600; /* Bright orange title */
+        margin-bottom: 10px;
+      }
+      .popup-info {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #1b1919; /* White text in popups */
+      }
+      .impact-visual {
+        height: 10px;
+        background-color: #ff6600; /* Orange for the impact bar */
+        border-radius: 5px;
+        margin-top: 5px;
+      }
+    </style>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Hazard Radar</h1>
+      <div class="buttons">
+        <button class="button">Toolkit</button>
+        <button class="button" id="donate-button">Donate</button>
+      </div>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+     <!-- Insights Container -->
+     <div class="insights-container">
+      <div class="insight-section">
+        <div class="insight-title">Hurricane Impact Overview</div>
+        <p>Number of people affected: 150,000</p>
+        <p>Total donations received: $500,000</p>
+        <div class="impact-visual" style="width: 80%;"></div> <!-- Visual representation of impact -->
+      </div>
+      <div class="insight-section">
+        <div class="insight-title">Top Contributing Sponsors</div>
+        <ul>
+          <li>American Airlines: 50,000 evacuation points</li>
+          <li>Lowe's: 10,000 sandbags distributed</li>
+          <li>Chick-fil-A: 20,000 meals provided</li>
+        </ul>
+      </div>
+      <div class="insight-section">
+        <div class="insight-title">Real-Time Disaster Statistics</div>
+        <p>Active shelters: 35</p>
+        <p>Volunteers deployed: 2,000</p>
+      </div>
+    </div>
+    <!-- Sidebar for Filters and Disaster Information -->
+    <div id="sidebar">
+      <h2>Disasters</h2>
+      <div class="filter-group">
+        <button class="filter-button">Fires</button>
+        <button class="filter-button">Quakes</button>
+        <button class="filter-button">Levels</button>
+        <button class="filter-button">Tornados</button>
+        <button class="filter-button">Hurricanes</button>
+      </div>
+      <div class="disaster-item">
+        <img src="fire-icon.png" alt="Fire Icon" class="disaster-icon" />
+        <span>William Mine Fire</span>
+      </div>
+      <div class="disaster-item">
+        <img src="tornado-icon.png" alt="Tornado Icon" class="disaster-icon" />
+        <span>Rockaway Beach Tornado</span>
+      </div>
+      <!-- Add more disaster items as needed -->
+    </div>
+
+    <!-- Zoom Buttons -->
+    <div class="zoom-buttons">
+      <div class="zoom-button" id="zoom-in">
+        <span class="zoom-icon">+</span>
+      </div>
+      <div class="zoom-button" id="zoom-out">
+        <span class="zoom-icon">−</span>
+      </div>
+    </div>
+
+    <script>
+      // Redirect to the donate page when the button is clicked
+      document.getElementById("donate-button").addEventListener("click", () => {
+        window.location.href = "donate.html";
+      });
+
+      // Your Mapbox access token
+      mapboxgl.accessToken = 'pk.eyJ1IjoidGFsaWEwNCIsImEiOiJjbTNqeTR5bDAwN3pwMnFtemdtbHV5cjRqIn0.PwS4iA8TsWcyNnW3GjremQ';
+
+      // Initialize the map with a dark theme
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v10',
+        center: [-96, 37.8],
+        zoom: 4,
+        maxZoom: 10,
+        minZoom: 4
+      });
+
+      // Restrict the map to the United States bounds
+      const bounds = [
+        [-125.0, 24.396308],
+        [-66.93457, 49.384358]
+      ];
+      map.setMaxBounds(bounds);
+      const hurricaneData = [
+        { lat: 25.7617, lng: -80.1918, peopleAffected: 50000, donationsReceived: 20000, area: "Miami" },
+        { lat: 27.9944, lng: -81.7603, peopleAffected: 30000, donationsReceived: 15000, area: "Central Florida" },
+        { lat: 28.5383, lng: -81.3792, peopleAffected: 20000, donationsReceived: 12000, area: "Orlando" },
+        { lat: 26.6406, lng: -81.8723, peopleAffected: 40000, donationsReceived: 18000, area: "Fort Myers" },
+        { lat: 30.3322, lng: -81.6557, peopleAffected: 15000, donationsReceived: 8000, area: "Jacksonville" }
+      ];
+
+      // Add interactive markers for hurricane-affected areas
+      hurricaneData.forEach(data => {
+        const marker = new mapboxgl.Marker()
+          .setLngLat([data.lng, data.lat])
+          .addTo(map);
+
+        // Create a popup with disaster and donation impact details
+        const popupContent = `
+          <div class="popup-info">
+            <strong>Area: ${data.area}</strong><br>
+            People Affected: ${data.peopleAffected}<br>
+            Donations Received: $${data.donationsReceived}
+            <div class="impact-visual" style="width: ${Math.min(100, (data.donationsReceived / 50000) * 100)}%;"></div>
+          </div>
+        `;
+
+        const popup = new mapboxgl.Popup({
+          closeButton: false,
+          closeOnClick: false
+        }).setHTML(popupContent);
+
+        // Show the popup when hovering over the marker
+        marker.getElement().addEventListener('mouseenter', () => popup.addTo(map).setLngLat([data.lng, data.lat]));
+        marker.getElement().addEventListener('mouseleave', () => popup.remove());
+      });
+      // Add zoom button functionality
+      document.getElementById("zoom-in").addEventListener("click", () => map.zoomIn());
+      document.getElementById("zoom-out").addEventListener("click", () => map.zoomOut());
+    </script>
+  </body>
+</html>
+

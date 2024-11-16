@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disaster List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f7f7f7;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .filter-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .filter-container select {
+        padding: 5px;
+        font-size: 16px;
+      }
+      .disaster-list {
+        list-style: none;
+        padding: 0;
+      }
+      .disaster-item {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer; /* Add a pointer cursor for better UX */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Natural Disasters in the U.S.</h1>
+    <div class="filter-container">
+      <label for="risk-level">Filter by Risk Level:</label>
+      <select id="risk-level">
+        <option value="all">All</option>
+        <option value="low">Low Risk</option>
+        <option value="medium">Medium Risk</option>
+        <option value="high">High Risk</option>
+      </select>
+    </div>
+    <ul class="disaster-list" id="disaster-list">
+      <!-- Disasters will be listed here dynamically -->
+    </ul>
+    <script>
+      // Sample data for natural disasters
+      const disasters = [
+        { name: "Hurricanes", risk: "high", link: "heatmap.html" }, // Added link for Hurricanes
+        { name: "Tornadoes", risk: "high" },
+        { name: "Earthquakes", risk: "medium" },
+        { name: "Wildfires", risk: "high" },
+        { name: "Floods", risk: "medium" },
+        { name: "Winter Storms", risk: "low" },
+        { name: "Droughts", risk: "low" }
+      ];
+
+      // Function to render the disaster list
+      function renderDisasterList(filter) {
+        const listElement = document.getElementById("disaster-list");
+        listElement.innerHTML = ""; // Clear existing items
+
+        // Filter disasters based on risk level
+        const filteredDisasters = disasters.filter(disaster => {
+          return filter === "all" || disaster.risk === filter;
+        });
+
+        // Render each disaster item
+        filteredDisasters.forEach(disaster => {
+          const item = document.createElement("li");
+          item.className = "disaster-item";
+          item.textContent = `${disaster.name} - ${disaster.risk.charAt(0).toUpperCase() + disaster.risk.slice(1)} Risk`;
+
+          // Add click event for Hurricanes
+          if (disaster.name === "Hurricanes" && disaster.link) {
+            item.addEventListener("click", () => {
+              window.location.href = disaster.link; // Redirect to heatmap.html
+            });
+          }
+
+          listElement.appendChild(item);
+        });
+      }
+
+      // Handle filter change
+      document.getElementById("risk-level").addEventListener("change", (event) => {
+        renderDisasterList(event.target.value);
+      });
+
+      // Initial render
+      renderDisasterList("all");
+    </script>
+  </body>
+</html>

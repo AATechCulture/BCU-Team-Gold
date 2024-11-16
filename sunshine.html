@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sunshine Page</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: url('./assets/firfly.jpg') no-repeat center center;
+        background-size: cover; /* Make the image fill the whole page */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      #aId-text {
+        font-size: calc(3rem + 2vw); /* Responsive font size */
+        color: #04042e; 
+        font-weight: bold;
+        font-style: oblique;
+        text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5); /* Text shadow for better visibility */
+        pointer-events: none;
+      }
+      /* Media query for smaller screens */
+      @media (max-width: 600px) {
+        #aId-text {
+          font-size: 2.5rem; /* Reduce font size for small screens */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="aId-text">AId</div> <!-- Watermark text in the center -->
+    <script>
+      // Redirect to the disasters page on click
+      document.body.addEventListener('click', () => {
+        window.location.href = '/disasters.html'; // Change to your disasters page
+      });
+    </script>
+  </body>
+</html>
