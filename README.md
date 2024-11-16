@@ -16,7 +16,7 @@ and Github
 ...point us to the short clip that tells us about your solution 😄
 
 # Link to Demo Presentation 📽
-[Presentation](https://docs.google.com/presentation/d/10j93yVLWsNF5To3_3VBImtPamGPRM8WK/edit?usp=sharing&ouid=111696550397930802386&rtpof=true&sd=true)...point us to your PPT or Canva slides 😍
+View our [presentation.](https://docs.google.com/presentation/d/10j93yVLWsNF5To3_3VBImtPamGPRM8WK/edit?usp=sharing&ouid=111696550397930802386&rtpof=true&sd=true)
 
 # Team Checklist ✅
  Team photo
