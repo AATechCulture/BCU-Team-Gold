@@ -9,10 +9,10 @@ The project is a donation platform that enables users to contribute their reward
 The project is aimed at helping those in the path of natural disasters. Donors can immediately donate points to support in the evacuation, while also receiving benfits down the road as a result. Donors help someone less fortunate now, while reaping the benefits of their kindness later on.
 
 # Tech Overview 💻
-Vercel
-ReactJS
-VS Code
-Github
+Vercel,
+ReactJS,
+VS Code,
+and Github
 ...point us to the short clip that tells us about your solution 😄
 
 # Link to Demo Presentation 📽
