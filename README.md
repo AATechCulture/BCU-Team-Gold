@@ -8,7 +8,7 @@ Project Description 🤯
 The project is a donation platform that enables users to contribute their reward points to support individuals impacted by natural disasters. Donors can access a real-time map displaying ongoing natural disasters, allowing them to make informed decisions on where their contributions are most needed.
 
 Project Value 💰
-....at least 3 sentences describing your target customer and tangible benefits from your solution
+The project is aimed at helping those in the path of natural disasters. Donors can immediately donate points to support in the evacuation, while also receiving benfits down the road as a result. Donors help someone less fortunate now, while reaping the benefits of their kindness down the road.
 
 Tech Overview 💻
 ... what tech was used to bring this project to life?
